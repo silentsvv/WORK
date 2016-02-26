@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas圆</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+	<script type="text/javascript">
+		var canvas =document.getElementById('canvas');
+		var cxt = canvas.getContext('2d');
+
+		canvas.width =1000;
+		canvas.heigth =400;
+
+		cxt.lineWidth = 5;
+		cxt.strokeStyle = "#005588";
+		
+		for(var i = 0; i<10; i++){
+			cxt.beginPath();
+			cxt.arc(50+i*100,50,40,0,(i+1)*0.2*Math.PI);
+			cxt.closePath();
+			cxt.stroke();
+		}
+		
+
+
+	</script>
+</html>

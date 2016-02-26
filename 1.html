@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.page{
+/*		background-color: #000;
+		font-size: 350px;
+		width: 400px;
+		height:400px;
+		color: #fff;
+		text-align:center;
+		margin: 0 auto;
+		position: absolute;*/
+		    width:360px;
+            height:360px;
+            padding:20px;
+            background-color: black;
+
+            color:white;
+
+            font-weight:bold;
+            font-size:360px;
+            line-height:360px;
+            text-align:center;
+
+            position:absolute;
+
+		
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+
+		-webkit-transform:rotateX(deg);
+	}
+	.mypage{
+		-webkit-perspective:800;
+		perspective:800;
+		-webkit-perspective-origin:50% 50%;
+		perspective-origin:50% 50%;
+
+	}
+	html,body{
+		width:100%;
+		height: 100%;
+	}
+	.mydiv{
+		position: relative;
+		width: 400px;
+		height: 400px;
+		margin: 0 auto;
+
+		-webkit-transform-style:preserve-3d;
+	}
+
+	 #page1{
+            -webkit-transform-origin:bottom;
+            -webkit-transition: -webkit-transform 1s linear;
+        }
+     #page2,#page3,#page4,#page5,#page6{
+            -webkit-transform-origin:bottom;
+            -webkit-transition: -webkit-transform 1s linear;
+            -webkit-transform: rotateX(90deg);
+     	}
+
+	.control input{
+		width: 500px;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.control{
+		width: 100%;
+		padding-top: 20px;
+	}
+	</style>
+</head>
+<body>
+<div class="mypage">
+	<div class="mydiv">
+		<div class="page" id="page1">1</div>
+		<div class="page" id="page2">2</div>
+		<div class="page" id="page3">3</div>
+		<div class="page" id="page4">4</div>
+		<div class="page" id="page5">5</div>
+		<div class="page" id="page6">6</div>
+<!-- 		<div class="control" >
+			<input type="range" min="-180" max="180" id="control">
+		</div> -->
+	</div>
+	<div class="control">
+		<a href="javascript:next()">next</a>
+		<a href="javascript:pre()">previous</a>
+	</div>
+</div>
+</body>
+<script>
+	var x=1;
+	
+	function next(){
+		if(x==6){
+			return;
+		}
+		var pageobj = document.getElementById('page'+x);
+		x= ++x;
+		var pageobj2 = document.getElementById('page'+x);
+		pageobj.style.transform = "rotateX(-90deg)";
+		pageobj2.style.transform = "rotateX(0deg)";
+
+
+	}
+
+	function pre(){
+		if(x==1){
+			return;
+		}
+		var pageobj = document.getElementById('page'+x);
+		x= --x;
+		var pageobj2 = document.getElementById('page'+x);
+		pageobj.style.transform = "rotateX(90deg)";
+		pageobj2.style.transform = "rotateX(0deg)";
+	}
+	// var x=0;
+	// var ctrdiv =document.getElementById("control");
+	// ctrdiv.onchange = function(){
+	// 	x = ctrdiv.value;
+	// 	var mydiv = document.getElementById('page1');
+	// 	mydiv.style.transformOrigin ="bottom";
+	// 	mydiv.style.transform = "rotateX("+x+"deg)" ;
+	// }
+</script>
+</html>

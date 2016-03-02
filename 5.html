@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.myclass{
+		background-color: #ff0;
+		width: 300px;
+		height: 300px;
+	}
+	</style>
+</head>
+<body>
+<button id="show1">
+	关闭
+</button>	
+<button id="show2">
+	打开
+</button>	
+	
+</body>
+<script>
+var mydiv = document.createElement("div");
+mydiv.id ="aaa";
+mydiv.innerHTML ="<div class='myclass'><table><tr><td>标题</td><td><input type='text' name='money' id='money'></td></tr><tr><td><input type='submit' onclick='ajax()'></td></tr></table></div>";
+document.body.appendChild(mydiv);
+
+var bobj1 = document.getElementById('show1');
+var bobj2 = document.getElementById('show2');
+var divobj = document.getElementById('aaa');
+bobj1.onclick = function(){
+	divobj.style.display="none";
+}
+bobj2.onclick = function(){
+	divobj.style.display="";
+}
+
+
+function ajax(){
+	var xmlhttp = new XMLHttpRequest();
+
+	xmlhttp.onreadystatechange = function(){
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			alert(xmlhttp.responseText);
+		}
+	}
+	var money = document.getElementById('money').value;
+	alert(money);	
+	xmlhttp.open("post","1.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	var str = "money="+money;
+	xmlhttp.send(str);
+
+}
+</script>
+</html>

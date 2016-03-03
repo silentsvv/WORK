@@ -4,27 +4,44 @@
 	<meta charset="UTF-8">
 	<title>	</title>
 	<style>
-	body{
-		background-color: 
-	}
+
 	</style>
 </head>
 <body>
 	<div class="my" id="my">
-		sssssssss
+		div
 	</div>
-	<button onclick="a()" id="1" value="mmmm">sss</button>
-	<button onclick="a()">关闭</button>
+	<button onclick="showa()" id="1" value="aaaa">无传值调用showa()</button>
+	<button onclick="showb(this)" id="2" value="bbbb">this传值调用showb()</button>
+	<button onclick="myclose()">关闭div</button>
+	<button onclick="myshow()">打开div</button>
+
+	<pre>
+		function showa(){
+			alert(this.value);
+		}
+		function showb(btn){
+			alert(btn.value);
+		}
+
+	</pre>
 </body>
 	<script>
 		var obj = document.getElementById('1');
-		function show(){
+		function showa(){
 			alert(this.value);
 		}
+		function showb(btn){
+			alert(btn.value);
+		}
+
 
 		var obj = document.getElementById('my');
-		function my(){
+		function myclose(){
 			obj.style.display = "none";
+		}
+		function myshow(){
+			obj.style.display = "";
 		}
 	</script>
 </html>

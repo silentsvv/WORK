@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="page">
+		<div class="show">
+			<ul id="pic">
+				<li><img src="images/1.jpg" alt=""></li>
+				<li><img src="images/2.jpg" alt=""></li>
+				<li><img src="images/3.jpg" alt=""></li>
+				<li><img src="images/4.jpg" alt=""></li>
+				<li><img src="images/5.jpg" alt=""></li>
+				<li><img src="images/6.jpg" alt=""></li>
+			</ul>
+			<div class="radius">
+				<ul id="radius">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="pre">
+				<img src="images/l.png" alt="" id="pre">
+			</div>
+			<div class="next">
+				<img src="images/r.png" alt="" id="next">
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+
+	var preobj = document.getElementById('pre');
+	var nextobj = document.getElementById('next');
+	var radius = document.getElementById('radius');
+	
+	var picobj = document.getElementsByTagName('img');
+	var liobj = [];
+	
+
+
+	for(var i=0; i<6 ; i++){
+		liobj[i] = radius.getElementsByTagName('li')[i];
+	}
+
+	var count = 1;
+	liobj[0].setAttribute("class","red");
+	picobj[0].setAttribute("class","toshow");
+	for(var i=1;i<6;i++){
+		liobj[i].setAttribute("class","write");
+		picobj[i].setAttribute("class","tohide");
+	}
+
+
+	nextobj.onclick = function(){
+		next();
+		clearInterval(timer);
+		setTimeout(function(){
+			setInterval(next,2000)},8000);
+	}
+
+
+
+	function next(){
+		if (count ==6) {
+			liobj[5].setAttribute("class","write");
+			picobj[5].setAttribute("class","tohide");
+			liobj[0].setAttribute("class","red");
+			picobj[0].setAttribute("class","toshow");
+			count = 1;
+		}else{
+		liobj[count-1].setAttribute("class","write") ;
+		picobj[count-1].setAttribute("class","tohide");
+		liobj[count].setAttribute("class","red");
+		picobj[count].setAttribute("class","toshow");
+		count++;
+		}
+	}
+
+	preobj.onclick = function(){
+		pre();
+		clearInterval(timer);
+		setTimeout(function(){
+			setInterval(next,2000)},8000);
+	}
+
+	function pre(){
+		if(count == 1){
+			liobj[0].setAttribute("class","write");
+			picobj[0].setAttribute("class","tohide");
+			liobj[5].setAttribute("class","red");
+			picobj[5].setAttribute("class","toshow");
+			count=6;
+		}else{
+			liobj[count-1].setAttribute("class","write");
+			picobj[count-1].setAttribute("class","tohide");
+			liobj[count-2].setAttribute("class","red");
+			picobj[count-2].setAttribute("class","toshow");
+			count--;
+		}
+	}
+
+	var timer = setInterval(next,2000);
+
+</script>
+</html>

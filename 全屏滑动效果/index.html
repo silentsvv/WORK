@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding: 0;
+	}
+
+	html,body,.container,.sections{
+		height: 100%;
+		overflow-y:hidden;
+	}
+
+	#section01,#section02,#section03,#section04{
+		height: 100%;
+		background-size:cover;
+		position: 50%,50%;
+	}
+
+	#section01{
+		background:url(images/1.jpg);
+	}
+
+	#section02{
+		background:url(images/2.jpg);
+	}
+
+	#section03{
+		background:url(images/3.jpg);
+	}
+
+	#section04{
+		background:url(images/4.jpg);
+	}
+
+	.left{
+		width: 25%;
+		float: left;
+	}
+
+	.leftwidth{
+		width: 400%;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="sections leftwidth">
+			<div class="section left" id="section01">
+				<h3>This is the page</h3>
+			</div>
+			<div class="section left" id="section02">
+				<h3>This is the page</h3>
+			</div>
+			<div class="section left" id="section03">
+				<h3>This is the page</h3>
+			</div>
+			<div class="section left" id="section04">
+				<h3>This is the page</h3>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

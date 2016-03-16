@@ -1,0 +1,124 @@
+// @mixin toolbar-item($pos,$hoverPos){
+// 	background-position:0px $pos;
+// 	&:hover{
+// 		background-position:0px $hoverPos;
+// 	}
+// }
+$toolbar-item-size : 52px;
+
+.toolbar {
+	position:fixed;
+	left:50%;
+	bottom:5px;
+	margin-left:- $toolbar-item-size / 2;
+}
+.toolbar-item {
+	height:$toolbar-item-size;
+	width:$toolbar-item-size;
+	display:block;
+	margin-top:1px;
+	position:relative;
+	&:after{
+		content:"";
+		width: 172px;
+		position:absolute;
+		right: $toolbar-item-size;
+		bottom:10px;
+		background:url(../img/toolbar_img.png);
+		background-repeat:no-repeat;
+		@include opacity(0);
+		@include transform(scale(0.01));
+		@include transform-origin(95% 95%);
+		@include transition(all 1s);
+	}
+	&:hover{
+		&:after{
+			@include opacity(1);
+			@include transform(scale(1));
+		}
+		.toolbar-btn{
+			
+			&:before{
+				top: - $toolbar-item-size;
+			}
+			&:after{
+				top: 0px;
+			}
+		}
+	}
+}
+.toolbar-item-weixin {
+	&:after{
+		background-position:0px 0px;
+		height:212px;
+	}
+	.toolbar-btn {
+		@extend .icon-wechat;
+		&:after{
+			content: "公众\A账号";
+		}
+	}
+}
+.toolbar-item-feedback {
+	.toolbar-btn {
+		@extend .icon-chat-3;
+		&:after{
+			content: "意见\A反馈";
+		}
+	}
+}
+.toolbar-item-app {
+	&:after{
+		content:"";
+		background-position:0px -222px;
+		height: 194px;
+	}
+	.toolbar-btn {
+		&:before {
+			content: "\e902";
+		}
+		&:after{
+			content: "APP\A下载";
+		}
+	}
+}
+.toolbar-item-top {
+	.toolbar-btn {
+		@extend .icon-vertical_align_top;
+		&:after{
+			content: "返回\A顶部";
+		}
+	}
+}
+.toolbar-btn {
+	&,&:before,&:after{
+		width: $toolbar-item-size ;
+		height: $toolbar-item-size;
+		position:absolute;
+		left:0;
+	}
+	overflow:hidden;
+	white-space:pre;
+	top:0;
+	
+	&:before,&:after{
+		content: "";
+		color: #fff;
+		text-align: center;
+		@include transition(all 1s);
+	}
+	&:before{	
+		top: 0;
+		background-color:#d0d6d9;	
+		font-size: 40px;	
+		line-height:$toolbar-item-size;		
+	}
+	&:after{
+		top:$toolbar-item-size;
+		background-color:#98a1a6;
+		padding-top:12px;
+		line-height: 1.2;
+		font-size: 12px;
+		vertical-align: middle;
+	}
+}

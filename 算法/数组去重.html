@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+</body>
+<script>
+	var arr=[1,2,3,1,43,12,12,1];
+	var set={};
+	var newarr=[];
+	
+	for(i=0; i<arr.length; i++){
+		if(!set[arr[i]]){
+			set[arr[i]]=1;
+			newarr.push(arr[i]);
+		}
+	}
+	alert(newarr);
+</script>
+</html>

@@ -7,20 +7,77 @@
 </head>
 <body>
 	<div class="slider">
-		<div class="main">
-			<div class="main-i">
+		<div class="main" id="template_main">
+			<div class="main-i" id="main_{{index}}">
 				<div class="caption">
-					<h2>My caption</h2>
-					<h3>My caption</h3>
+					<h2>{{h2}}</h2>
+					<h3>{{h3}}</h3>
 				</div>
-				<img src="img/1.jpg" alt="">
+				<img src="img/{{index}}.jpg" alt="">
 			</div>
 		</div>
-		<div class="ctrl">
-			<a href="" class="ctrl-i">
-				<img src="img/1.jpg" alt="">
+		<div class="ctrl" id="template_ctrl">
+			<a href="javascript:switchSlider({{index}});" class="ctrl-i" id="ctrl_{{index}}">
+				<img src="img/{{index}}.jpg" alt="">
 			</a>
 		</div>
 	</div>
 </body>
+<script>
+	var g = function(id){
+		if(id.substr(0,1) =='.'){
+			return document.getElementsByClassName(id.substr(1));
+		}
+		return document.getElementById(id);
+	}
+
+
+
+	var data = [
+	{index:1,h2:"My caption",h3:"My caption"},
+	{index:2,h2:"My caption",h3:"My caption"},
+	{index:3,h2:"My caption",h3:"My caption"},
+	{index:4,h2:"My caption",h3:"My caption"},
+	{index:5,h2:"My caption",h3:"My caption"},
+	{index:6,h2:"My caption",h3:"My caption"},
+	{index:7,h2:"My caption",h3:"My caption"}
+	];
+
+	function addSliders(){
+		var tpl_main = g('template_main').innerHTML.replace(/^\s*/,"").replace(/\s*$/,"");
+		var tpl_ctrl = g('template_ctrl').innerHTML.replace(/^\s*/,"").replace(/\s*$/,"");
+		var out_main =[];
+		var out_ctrl =[];
+
+		for(i in data){
+			var _html_main = tpl_main.replace(/{{index}}/g,data[i].index).replace(/{{h2}}/g,data[i].h2).replace(/{{h3}}/g,data[i].h3);
+			var _html_ctrl = tpl_ctrl.replace(/{{index}}/g,data[i].index);
+			out_main.push(_html_main);
+			out_ctrl.push(_html_ctrl);
+		}
+		g('template_main').innerHTML = out_main.join("");
+		g('template_ctrl').innerHTML = out_ctrl.join("");
+	}
+
+	function switchSlider(n){
+		var main = g('main_'+n);
+		var ctrl = g('ctrl_'+n);
+
+		var clear_main = g('.main-i');
+		var clear_ctrl = g('.ctrl-i');
+
+		for(i=0; i<clear_ctrl.length; i++){
+			clear_main[i].className = clear_main[i].className.replace('main-i active','main-i');
+			clear_ctrl[i].className = clear_ctrl[i].className.replace('ctrl-i active','ctrl-i');
+		}
+
+		main.className += " active";
+		ctrl.className += " active";
+	}
+
+	window.onload = function(){
+		addSliders();
+	}
+
+</script>
 </html>

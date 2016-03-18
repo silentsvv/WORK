@@ -1,27 +1,28 @@
-requirejs.config({
+/*requirejs.config({
 	paths: {
 		jquery: 'jquery-1.12.1.min'
 	}
 });
 
-requirejs(['jquery','scrollto'],function($,scroll){
-	
+requirejs(['jquery'],function($){
+	$('#backTop').on('click',go);
 	$(window).on('scroll',function(){
 		checkPosition($(window).height());
 			}
 		);
 	checkPosition($(window).height());
 
-	var scroll = new scroll.ScrollTo({
 
-	});
-	console.log(scroll);
-	$('#backTop').on('click',$.proxy(scroll.move,scroll));
-	/*function move(){
+	
+	function move(){
 		$('html,body').animate({
 			scrollTop:0
 		},800);
-	}*/
+	}
+
+	function go(){
+		$('html,body').scrollTop(0);
+	}
 
 	function checkPosition(pos){
 		if($(window).scrollTop() > pos){
@@ -30,4 +31,4 @@ requirejs(['jquery','scrollto'],function($,scroll){
 			$('#backTop').fadeOut();
 		}
 	}
-});
+});*/
